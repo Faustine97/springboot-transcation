@@ -59,14 +59,14 @@
                 <td>${book.message_create_time}<input name="messageCreateTime" value="${book.message_create_time}" style="display: none"></td>
                 <td>${book.message_edit_time}<input name="messageEditTime" value="${book.message_edit_time}" style="display: none"></td>
                 <td>
-                    <c:if test="${book.group==sessionScope.user_group && sessionScope.user_group!='guest' || sessionScope.user_role=='admin'}">
+<%--                    <c:if test="${book.group==sessionScope.user_group && sessionScope.user_group!='guest' || sessionScope.user_role=='admin'}">--%>
                         <input type="submit" value="删除" onclick="this.form.action='/deleteGuestbook'">
-                    </c:if>
+<%--                    </c:if>--%>
                 </td>
                 <td>
-                    <c:if test="${book.group==sessionScope.user_group && sessionScope.user_group!='guest' || sessionScope.user_role=='admin'}">
+<%--                    <c:if test="${book.group==sessionScope.user_group && sessionScope.user_group!='guest' || sessionScope.user_role=='admin'}">--%>
                         <input type="submit" value="更新" onclick="this.form.action='/updateGuestbook'">
-                    </c:if>
+<%--                    </c:if>--%>
                 </td>
             </tr>
         </form>
