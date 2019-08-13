@@ -1,6 +1,5 @@
 package com.ucar.train.test.intercepors;
 
-import com.ucar.train.test.vo.User;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Component
-public class LoginInterceptor implements HandlerInterceptor {
+public class AdminInterceptor implements HandlerInterceptor {
 
     //这个方法是在访问接口之前执行的，我们只需要在这里写验证登陆状态的业务逻辑，就可以在用户调用指定接口之前验证登陆状态了
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -20,30 +19,17 @@ public class LoginInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
 //        这里的User是登陆时放入session的
 
-//        String user = (String) session.getAttribute("user");
-//        如果session中没有user，表示没登陆
-//        String user = "h";
-        String user = (String) session.getAttribute("user");
-        System.out.println("user: " + user);
-        if (user != null ){
-            // request.getRequestDispatcher("/login").forward(request, response);
-            //如果session里有user，表示该用户已经登陆，放行，用户即可继续调用自己需要的接口
+        List<String> perms = (List<String>)session.getAttribute("perms");
+
+        String perm = request.getServletPath();
+
+        if(perms!=null && perms.contains(perm))
             return true;
-        }else {
-            //这个方法返回false表示忽略当前请求，如果一个用户调用了需要登陆才能使用的接口，如果他没有登陆这里会直接忽略掉
-            //当然你可以利用response给用户返回一些提示信息，告诉他没登陆
-           response.sendRedirect("/login");
-            // request.getRequestDispatcher("/login").forward(request, response);
+        else{
+            response.sendRedirect("/perm_error");
             return false;
         }
-
-
-//        HttpSession session = request.getSession();
-////        这里的User是登陆时放入session的
-//
-//        List<String> perms = (List<String>)session.getAttribute("perms");
-//        System.out.println(perms);
-////        String user = (String) session.getAttribute("user");
+//        String user = (String) session.getAttribute("user");
 //        if (perms.contains("admin") ){
 //            // request.getRequestDispatcher("/login").forward(request, response);
 //            //如果session里有user，表示该用户已经登陆，放行，用户即可继续调用自己需要的接口

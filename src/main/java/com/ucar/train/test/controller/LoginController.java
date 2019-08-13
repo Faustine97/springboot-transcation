@@ -41,8 +41,10 @@ public class LoginController {
 
         if(impl.checkLogin(user,password)==true)
         {
+            List<String> perm = userService.getUserPerm(user);
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+            session.setAttribute("perms", perm);
             List<Guestbook> list = userService.getAllGuestbook(0,10);
             session.setAttribute("Guestbooks", list);
 

@@ -36,8 +36,8 @@ public class UserController {
         String user_email = request.getParameter("user_email");
         String user_telephone = request.getParameter("user_telephone");
         User user = new User(user_name,user_password,user_email,user_telephone);
-        userService.updateUser(user_name, user_password, user_email, user_telephone);
-
+        //userService.updateUser(user_name, user_password, user_email, user_telephone);
+        userService.updateUser(user);
         try {
             response.sendRedirect("/user_edit");
         } catch (IOException e) {

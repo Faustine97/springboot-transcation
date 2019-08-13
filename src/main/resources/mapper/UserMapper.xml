@@ -43,9 +43,28 @@
         select message_id,message_title,message_content,message_create_time,message_edit_time,guestbook.user_id,`group` from guestbook inner join user_group  on guestbook.user_id = user_group.user_id and user_name= #{user_name}
     </select>
 
-    <update id="updateUser">
-        update `user` set user_name=#{user_name}, user_password=#{user_password}, user_email=#{user_email}, user_telephone=#{user_telephone} WHERE user_name=#{user_name}
+    <update id="updateUser" parameterType="com.ucar.train.test.vo.User">
+--          update user set user_name=#{user_name}, user_password=#{user_password}, user_email=#{user_email}, user_telephone=#{user_telephone} WHERE user_name=#{user_name}
 --         update `user` set #{user_name}, #{user_password}, #{user_email}, #{user_telephone} WHERE #{user_name}
     </update>
+    <insert id="addRole" >
+       insert into role VALUES(#{ROLE_NAME},#{ROLE_INFO})
+    </insert>
+
+    <insert id="addRolePerm">
+        insert into role_perm VALUES(#{ROLE_NAME},#{PERM_NAME})
+    </insert>
+
+    <delete id="deleteRolePerm">
+        DELETE from role_perm where ROLE_NAME = #{ROLE_NAME} and PERM_NAME = #{PERM_NAME}
+    </delete>
+
+    <insert id="userAddRole">
+        insert into user_role VALUES(#{ROLE_NAME},#{USER_NAME})
+    </insert>
+    
+    <select id="getUserPerm" resultType="String">
+        SELECT PERM_NAME from `user` INNER JOIN user_role on `user`.user_name=#{user_name} and `user`.user_name = user_role.USER_NAME INNER JOIN role_perm on user_role.ROLE_NAME = role_perm.ROLE_NAME  GROUP BY(PERM_NAME)
+    </select>
 <!--    <select id=""-->
 </mapper>

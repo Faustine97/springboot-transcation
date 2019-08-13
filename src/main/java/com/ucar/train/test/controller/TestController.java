@@ -22,7 +22,7 @@ public class TestController {
 
     @RequestMapping("getAllUser")
     public String getAllUser(){
-        return GsonUtils.toJson(userService.getUserGuestbooks("Tom"));
+        return GsonUtils.toJson(userService.getUserPerm("Tom"));
     }
 
 }

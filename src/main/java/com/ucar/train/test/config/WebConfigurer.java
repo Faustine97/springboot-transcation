@@ -1,5 +1,6 @@
 package com.ucar.train.test.config;
 import com.ucar.train.test.intercepors.LoginInterceptor;
+import com.ucar.train.test.intercepors.AdminInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -11,6 +12,8 @@ public class WebConfigurer implements WebMvcConfigurer {
 
     @Autowired
     private LoginInterceptor loginInterceptor;
+    @Autowired
+    private AdminInterceptor adminInterceptor;
 
     // 这个方法是用来配置静态资源的，比如html，js，css，等等
     @Override
@@ -23,6 +26,11 @@ public class WebConfigurer implements WebMvcConfigurer {
         // addPathPatterns("/**") 表示拦截所有的请求，
         // excludePathPatterns("/login", "/register") 表示除了登陆与注册之外，因为登陆注册不需要登陆也可以访问
         registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/login", "/register","/login_check");
+        registry.addInterceptor(adminInterceptor).addPathPatterns("/admin");
+       // registry.addInterceptor(loginInterceptor).addPathPatterns("/user_edit");
+        // registry.addInterceptor(AdminInterceptor);
+//      //  registry.addInterceptor(myInterceptorTwo).addPathPatterns("/**");
+//        registry.addInterceptor(myInterceptor).addPathPatterns("/**");
     }
 }
 

@@ -30,4 +30,10 @@ public class MessageController {
 
         return "message_list";
     }
+
+    @RequestMapping("/perm_error")
+    public String permError()
+    {
+        return "perm_error";
+    }
 }

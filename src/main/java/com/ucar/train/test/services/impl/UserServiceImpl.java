@@ -32,13 +32,14 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+
     @Override
     public List<UserDTO> getAllUser() {
         return userMapper.getAllUser();
     }
+
     @Override
-    public boolean checkLogin(String user, String password)
-    {
+    public boolean checkLogin(String user, String password) {
         try {
             Connection conn = JdbcHelper.getConnection();
 
@@ -48,7 +49,7 @@ public class UserServiceImpl implements UserService {
             ResultSet rs = ps.executeQuery();
             // 如果查找不到该用户
             if (rs.next() == false) {
-                return  false;
+                return false;
             }
             // 如果查找到用户，则比较密码
             else {
@@ -57,17 +58,14 @@ public class UserServiceImpl implements UserService {
                 // 密码正确
                 if (result.equals(password)) {
                     return true;
-                }
-                else{
+                } else {
                     return false;
                 }
             }
-        }catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
             return true;
-        }
-        finally {
+        } finally {
 //            try {
 //                rs.close();
 //                ps.close();
@@ -77,40 +75,73 @@ public class UserServiceImpl implements UserService {
 //            }
         }
     }
+
     @Override
-    public List<Role> getAllRole()
-    {
+    public List<Role> getAllRole() {
         return userMapper.getAllRole();
     }
+
     @Override
-    public List<Guestbook> getAllGuestbook(int start, int count){
+    public List<Guestbook> getAllGuestbook(int start, int count) {
         return userMapper.getAllGuestbook(start, count);
     }
+
     @Override
-    public User getUser(String name)
-    {
+    public User getUser(String name) {
         return userMapper.getUser(name);
     }
+
     @Override
-    public List<UserInfo> getAllUserInfo()
-    {
+    public List<UserInfo> getAllUserInfo() {
         return userMapper.getAllUserInfo();
     }
+
     @Override
-    public List<Guestbook> getUserGuestbooks(String name)
-    {
+    public List<Guestbook> getUserGuestbooks(String name) {
         return userMapper.getUserGuestbooks(name);
     }
+
     @Override
-    public void updateUser(String name, String pwd, String email, String tel)
-    {
-        userMapper.updateUser(name, pwd, email, tel, name);
-//        if()
-//        {
-//            return true;
-//        }
-//        else {
-//            return false;
-//        }
+    public void updateUser(User user) {
+        userMapper.updateUser(user);
     }
+
+    public void addRole(String ROLE_NAME, String ROLE_INFO){
+        userMapper.addRole(ROLE_NAME,ROLE_INFO);
+    }
+    public void addRolePerm(String ROLE_NAME, String PERM_NAME){
+        userMapper.addRolePerm(ROLE_NAME,PERM_NAME);
+    }
+    public boolean deleteRolePerm(String ROLE_NAME, String PERM_NAME){
+       if ( userMapper.deleteRolePerm(ROLE_NAME,PERM_NAME)==0)
+       {
+           return false;
+       }
+       else {
+           return true;
+       }
+    }
+
+    public void userAddRole(String ROLE_NAME, String USER_NAME)
+    {
+        userMapper.userAddRole(ROLE_NAME, USER_NAME);
+    }
+
+    public List<String> getUserPerm(String name)
+    {
+        return userMapper.getUserPerm(name);
+    }
+
+
+//    public void updateUser(String name, String pwd, String email, String tel)
+//    {
+//        userMapper.updateUser(name, pwd, email, tel, name);
+////        if()
+////        {
+////            return true;
+////        }
+////        else {
+////            return false;
+////        }
+//    }
 }
