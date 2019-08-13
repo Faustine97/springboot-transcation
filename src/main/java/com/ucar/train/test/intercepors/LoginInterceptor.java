@@ -1,6 +1,5 @@
 package com.ucar.train.test.intercepors;
 
-import com.ucar.train.test.vo.User;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

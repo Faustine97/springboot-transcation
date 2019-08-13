@@ -1,7 +1,6 @@
 import com.ucar.train.test.dto.UserDTO;
 import com.ucar.train.test.mapper.UserMapper;
 import com.ucar.train.test.vo.Role;
-import com.ucar.train.test.vo.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

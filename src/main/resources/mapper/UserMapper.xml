@@ -2,29 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ucar.train.test.mapper.UserMapper" >
 
-    <resultMap id="mapper" type="com.ucar.train.test.vo.User">
-        <id column="id" property="id"/>
-        <result property="name" column="psw"/>
-        <result property="psw" column="psw"/>
-        <result property="createTime" column="create_time"/>
-        <result property="modifyTime" column="modify_time"/>
-    </resultMap>
+<!--    <resultMap id="mapper" type="com.ucar.train.test.vo.User">-->
+<!--        <id column="id" property="id"/>-->
+<!--        <result property="name" column="psw"/>-->
+<!--        <result property="psw" column="psw"/>-->
+<!--        <result property="createTime" column="create_time"/>-->
+<!--        <result property="modifyTime" column="modify_time"/>-->
+<!--    </resultMap>-->
 
     <resultMap id="role" type="com.ucar.train.test.vo.Role">
         <result property="ROLE_NAME" column="ROLE_NAME"/>
         <result property="ROLE_INFO" column="ROLE_INFO"/>
     </resultMap>
 
-    <select id="getAllUser" resultMap="mapper">
-        SELECT
-        id,
-        name,
-        psw
-        FROM user
+<!--    <resultMap id="user" type="com.ucar.train.test.vo.User">-->
+<!--        <result property="user_id" column="user_id"/>-->
+<!--        <result property="user_name" column="user_name"/>-->
+<!--        <result property="user_password" column="user_password"/>-->
+<!--        <result property="user_email" column="user_email"/>-->
+<!--        <result property="user_telephone" column="user_telephone"/>-->
+<!--    </resultMap>-->
+
+    <select id="getUser" resultType="com.ucar.train.test.vo.User">
+        select * from user where user_name = #{user_name};
     </select>
     
-    <select id="getAllRole" resultMap="role">
+    <select id="getAllRole" resultType="com.ucar.train.test.vo.Role">
         select * from role
     </select>
+    
+    <select id="getAllGuestbook" resultType="com.ucar.train.test.vo.Guestbook">
+        select message_id,message_title,message_content,message_create_time,message_edit_time,guestbook.user_id,`group` from guestbook inner join user_group  on guestbook.user_id = user_group.user_id limit #{start},#{count}
+    </select>
+
+    <select id="getAllUserInfo" resultType="com.ucar.train.test.vo.UserInfo">
+        select `user`.user_id, user_name, user_email, user_telephone, message_number from `user` INNER JOIN (SELECT user_id, count(*) as message_number from guestbook GROUP BY user_id) as t on `user`.user_id = t.user_id
+    </select>
+
+    <select id="getUserGuestbooks" parameterType="String" resultType="com.ucar.train.test.vo.Guestbook">
+        select message_id,message_title,message_content,message_create_time,message_edit_time,guestbook.user_id,`group` from guestbook inner join user_group  on guestbook.user_id = user_group.user_id and user_name= #{user_name}
+    </select>
+
+    <update id="updateUser">
+        update `user` set user_name=#{user_name}, user_password=#{user_password}, user_email=#{user_email}, user_telephone=#{user_telephone} WHERE user_name=#{user_name}
+--         update `user` set #{user_name}, #{user_password}, #{user_email}, #{user_telephone} WHERE #{user_name}
+    </update>
 <!--    <select id=""-->
 </mapper>

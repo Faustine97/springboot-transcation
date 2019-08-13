@@ -1,17 +1,21 @@
 package com.ucar.train.test.vo;
 
-public class User {
+public class UserInfo {
     private int user_id;
     private String user_name;
     private String user_password;
     private String user_email;
     private String user_telephone;
-    public int getUser_id() {
-        return user_id;
-    }
+    private int message_number;
 
-    public void setUser_id(int user_id) {
+    public UserInfo(){}
+
+    public UserInfo(int user_id, String user_name, String user_email, String user_telephone, int message_number) {
         this.user_id = user_id;
+        this.user_name = user_name;
+        this.user_email = user_email;
+        this.user_telephone = user_telephone;
+        this.message_number = message_number;
     }
 
     public String getUser_name() {
@@ -45,37 +49,32 @@ public class User {
     public void setUser_telephone(String user_telephone) {
         this.user_telephone = user_telephone;
     }
-    public User(){}
-    public User(int user_id, String user_name, String user_password, String user_email, String user_telephone) {
-        this.user_id = user_id;
-        this.user_name = user_name;
-        this.user_password = user_password;
-        this.user_email = user_email;
-        this.user_telephone = user_telephone;
+
+    public int getMessage_number() {
+        return message_number;
     }
 
-    public User(int user_id, String user_name, String user_email, String user_telephone) {
-        this.user_id = user_id;
-        this.user_name = user_name;
-        this.user_email = user_email;
-        this.user_telephone = user_telephone;
+    public void setMessage_number(int message_number) {
+        this.message_number = message_number;
     }
 
-    public User(String user_name, String user_password, String user_email, String user_telephone) {
-        this.user_name = user_name;
-        this.user_password = user_password;
-        this.user_email = user_email;
-        this.user_telephone = user_telephone;
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserInfo{" +
                 "user_id=" + user_id +
                 ", user_name='" + user_name + '\'' +
                 ", user_password='" + user_password + '\'' +
                 ", user_email='" + user_email + '\'' +
                 ", user_telephone='" + user_telephone + '\'' +
+                ", message_number=" + message_number +
                 '}';
     }
 }

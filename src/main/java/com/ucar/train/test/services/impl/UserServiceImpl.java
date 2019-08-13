@@ -4,7 +4,10 @@ import com.ucar.train.test.dto.UserDTO;
 import com.ucar.train.test.mapper.UserMapper;
 import com.ucar.train.test.services.UserService;
 import com.ucar.train.test.util.JdbcHelper;
+import com.ucar.train.test.vo.Guestbook;
 import com.ucar.train.test.vo.Role;
+import com.ucar.train.test.vo.User;
+import com.ucar.train.test.vo.UserInfo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -78,5 +81,36 @@ public class UserServiceImpl implements UserService {
     public List<Role> getAllRole()
     {
         return userMapper.getAllRole();
+    }
+    @Override
+    public List<Guestbook> getAllGuestbook(int start, int count){
+        return userMapper.getAllGuestbook(start, count);
+    }
+    @Override
+    public User getUser(String name)
+    {
+        return userMapper.getUser(name);
+    }
+    @Override
+    public List<UserInfo> getAllUserInfo()
+    {
+        return userMapper.getAllUserInfo();
+    }
+    @Override
+    public List<Guestbook> getUserGuestbooks(String name)
+    {
+        return userMapper.getUserGuestbooks(name);
+    }
+    @Override
+    public void updateUser(String name, String pwd, String email, String tel)
+    {
+        userMapper.updateUser(name, pwd, email, tel, name);
+//        if()
+//        {
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
     }
 }

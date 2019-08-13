@@ -15,7 +15,7 @@
     <a href="/message_list">返回</a>
 </div>
 
-<form action="/message_board_spring_mybatis02/UserEditServlet">
+<form action="/user_edit_update">
     <table>
         <tr>
             <td>用户名</td>

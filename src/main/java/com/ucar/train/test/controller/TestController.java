@@ -20,9 +20,9 @@ public class TestController {
         return driverClassName;
     }
 
-        @RequestMapping("getAllUser")
+    @RequestMapping("getAllUser")
     public String getAllUser(){
-        return GsonUtils.toJson(userService.getAllRole());
+        return GsonUtils.toJson(userService.getUserGuestbooks("Tom"));
     }
 
 }
