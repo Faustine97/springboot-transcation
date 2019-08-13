@@ -25,6 +25,7 @@ public class LoginController {
 
         session.setAttribute("user",null);
         session.setAttribute("user_role",null);
+        session.setAttribute("page",null);
         //session.setAttribute("user", );
         return "login";
     }
@@ -51,6 +52,7 @@ public class LoginController {
             session.setAttribute("user", user);
             session.setAttribute("perms", perm);
             session.setAttribute("User",user1);
+            session.setAttribute("page",0);
             try {
                 response.sendRedirect("/message_list");
             } catch (IOException e) {

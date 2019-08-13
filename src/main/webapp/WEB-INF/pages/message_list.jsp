@@ -31,12 +31,12 @@
     </ul>
 </div>
 
-<form action="message_list.jsp">
-    <input type="text" value="" name="oneUser" >
-    <input type="submit" value="搜索" name="search" onclick="this.form.style.value='one'">
-    <input type="submit" value="显示全部" name="allUser" onclick="this.form.style.value='all'">
-    <input type="text" value="all" name="style" style="display:none">
-</form>
+<%--<form action="message_list.jsp">--%>
+<%--    <input type="text" value="" name="oneUser" >--%>
+<%--    <input type="submit" value="搜索" name="search" onclick="this.form.style.value='one'">--%>
+<%--    <input type="submit" value="显示全部" name="allUser" onclick="this.form.style.value='all'">--%>
+<%--    <input type="text" value="all" name="style" style="display:none">--%>
+<%--</form>--%>
 <br>
     <table border="1" cellspacing="0">
         <tr>
@@ -72,10 +72,10 @@
         </form>
         </c:forEach>
         <tr>
-            <form action="/message_board_spring_mybatis02/PagingServlet">
-                <input type="text" name="style" value="" style="display: none">
-                <td rowspan="3"><input type="submit" value="上一页" onclick="this.form.style.value='pre'"></td>
-                <td rowspan="3"><input type="submit" value="下一页" onclick="this.form.style.value='next'"></td>
+            <form action="" method="post">
+                <input type="text" name="page" value="${sessionScope.page}" style="display: none">
+                <td rowspan="3"><input type="submit" value="上一页" onclick="this.form.action='/pre_page'"></td>
+                <td rowspan="3"><input type="submit" value="下一页" onclick="this.form.action='/next_page'"></td>
             </form>
         </tr>
     </table>

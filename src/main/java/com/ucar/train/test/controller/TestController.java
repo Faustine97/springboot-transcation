@@ -24,12 +24,12 @@ public class TestController {
 
     @RequestMapping("/test")
     public String getAllUser(){
-        return GsonUtils.toJson(userService.getUserGroup("Tom"));
+        return GsonUtils.toJson(userService.getAllGuestbooksCount());
     }
     @RequestMapping("/test2")
     public void test2()
     {
-//        userService.updateUser("a","a", "a","a",3);
+        userService.userDeleteRole("Tom","admin");
     }
 
 }

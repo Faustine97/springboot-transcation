@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -33,7 +35,9 @@ public class MessageController {
 //        System.out.println("list: " +list);
 //        System.out.println("group: "+ group);
         session.setAttribute("user_group",group);
-        List<Guestbook> list1 = userService.getAllGuestbook(0,10);
+        int page = (Integer) session.getAttribute("page");
+
+        List<Guestbook> list1 = userService.getAllGuestbook(page*10,10);
         session.setAttribute("Guestbooks", list1);
         if(list!=null&&list.contains("admin"))
         {
@@ -42,6 +46,40 @@ public class MessageController {
 
         return "message_list";
     }
+
+    @RequestMapping("pre_page")
+    public void prePage(HttpServletRequest request, HttpServletResponse response)
+    {
+        HttpSession session = request.getSession();
+        int page = (Integer) session.getAttribute("page");
+        if(page>0)
+        {
+            session.setAttribute("page", page-1);
+        }
+        try {
+            response.sendRedirect("/message_list");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping("next_page")
+    public void nextPage(HttpServletRequest request, HttpServletResponse response)
+    {
+        HttpSession session = request.getSession();
+        int page = (Integer) session.getAttribute("page");
+        int count = userService.getAllGuestbooksCount();
+        if(((page+1)*10)<count)
+        {
+            session.setAttribute("page", page+1);
+        }
+
+        try {
+            response.sendRedirect("/message_list");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @RequestMapping("/perm_error")
     public String permError()

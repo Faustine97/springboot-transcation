@@ -62,7 +62,10 @@
     <insert id="userAddRole">
         insert into user_role VALUES(#{ROLE_NAME},#{USER_NAME})
     </insert>
-    
+
+    <delete id="userDeleteRole">
+        delete from user_role where USER_NAME=#{USER_NAME} and ROLE_NAME = #{ROLE_NAME}
+    </delete>
     <select id="getUserPerm" resultType="String">
         SELECT PERM_NAME from `user` INNER JOIN user_role on `user`.user_name=#{user_name} and `user`.user_name = user_role.USER_NAME INNER JOIN role_perm on user_role.ROLE_NAME = role_perm.ROLE_NAME  GROUP BY(PERM_NAME)
     </select>
@@ -85,7 +88,9 @@
     <insert id="addGuestbook">
         INSERT INTO `guestbook` (`message_title`, `message_content`, `message_create_time`, `message_edit_time`, `user_id`) VALUES (#{message_title}, #{message_content}, #{message_create_time}, #{message_edit_time}, #{user_id})
     </insert>
-
+    <select id="getAllGuestbooksCount" resultType="Integer">
+        SELECT count(*) from guestbook
+    </select>
 <!--    <update id="updateUser">-->
 <!--        update `user` set user_name=#{user_name}, user_password=#{user_password}, user_email=#{user_email}, user_telephone=#{user_telephone} WHERE user_id = #{user_id}-->
 <!--    </update>-->

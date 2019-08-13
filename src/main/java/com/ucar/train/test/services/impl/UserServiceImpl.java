@@ -8,6 +8,7 @@ import com.ucar.train.test.vo.Guestbook;
 import com.ucar.train.test.vo.Role;
 import com.ucar.train.test.vo.User;
 import com.ucar.train.test.vo.UserInfo;
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -123,7 +124,10 @@ public class UserServiceImpl implements UserService {
     {
         userMapper.userAddRole(ROLE_NAME, USER_NAME);
     }
-
+    public void userDeleteRole(@Param("USER_NAME")String USER_NAME, @Param("ROLE_NAME")String ROLE_NAME)
+    {
+        userMapper.userDeleteRole(USER_NAME, ROLE_NAME);
+    }
     public List<String> getUserPerm(String name)
     {
         return userMapper.getUserPerm(name);
@@ -150,7 +154,10 @@ public class UserServiceImpl implements UserService {
     {
         userMapper.addGuestbook(message_title,message_content,message_create_time,message_edit_time,user_id);
     }
-
+    public int getAllGuestbooksCount()
+    {
+        return userMapper.getAllGuestbooksCount();
+    }
 //    public void updateUser(String user_name, String user_password, String user_email, String user_telephone, int user_id)
 //    {
 //        userMapper.updateUser(user_name,user_password,user_email,user_telephone,user_id);

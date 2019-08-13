@@ -59,13 +59,27 @@ public class AdminController {
             return "fail";
         }
     }
-    @RequestMapping("/user_add_perm")
-    public String UserAddPerm(HttpServletRequest request)
+    @RequestMapping("/user_add_role")
+    public String UserAddRole(HttpServletRequest request)
     {
         String user = request.getParameter("user");
         String role = request.getParameter("role");
         try {
             userService.userAddRole(role,user);
+            return "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "fail";
+        }
+
+    }
+    @RequestMapping("/user_delete_role")
+    public String UserDeleteRole(HttpServletRequest request)
+    {
+        String user = request.getParameter("user");
+        String role = request.getParameter("role");
+        try {
+            userService.userDeleteRole(user,role);
             return "success";
         } catch (Exception e) {
             e.printStackTrace();
