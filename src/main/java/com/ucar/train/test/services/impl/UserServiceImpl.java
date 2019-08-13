@@ -13,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -132,16 +129,31 @@ public class UserServiceImpl implements UserService {
         return userMapper.getUserPerm(name);
     }
 
+    public List<String> getUserRole(String name)
+    {
+        return userMapper.getUserRole(name);
+    }
 
-//    public void updateUser(String name, String pwd, String email, String tel)
+    public List<String> getUserGroup(String name)
+    {
+        return userMapper.getUserGroup(name);
+    }
+    public void deleteGuestbook(int message_id)
+    {
+        userMapper.deleteGuestbook(message_id);
+    }
+    public void updateGuestbook(String message_title, String message_content, Timestamp message_edit_time, int message_id)
+    {
+        userMapper.updateGuestbook(message_title,message_content,message_edit_time,message_id);
+    }
+    public void addGuestbook(String message_title, String message_content, Timestamp message_create_time,Timestamp message_edit_time, int user_id)
+    {
+        userMapper.addGuestbook(message_title,message_content,message_create_time,message_edit_time,user_id);
+    }
+
+//    public void updateUser(String user_name, String user_password, String user_email, String user_telephone, int user_id)
 //    {
-//        userMapper.updateUser(name, pwd, email, tel, name);
-////        if()
-////        {
-////            return true;
-////        }
-////        else {
-////            return false;
-////        }
+//        userMapper.updateUser(user_name,user_password,user_email,user_telephone,user_id);
 //    }
+
 }

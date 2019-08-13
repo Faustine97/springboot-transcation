@@ -66,5 +66,28 @@
     <select id="getUserPerm" resultType="String">
         SELECT PERM_NAME from `user` INNER JOIN user_role on `user`.user_name=#{user_name} and `user`.user_name = user_role.USER_NAME INNER JOIN role_perm on user_role.ROLE_NAME = role_perm.ROLE_NAME  GROUP BY(PERM_NAME)
     </select>
-<!--    <select id=""-->
+
+    <select id="getUserRole" resultType="String">
+        select ROLE_NAME from user_role where USER_NAME = #{user_name}
+    </select>
+
+    <select id="getUserGroup" resultType="String">
+        select `group` from user_group where user_name=#{user_name}
+    </select>
+
+    <delete id="deleteGuestbook">
+        DELETE from guestbook where message_id = #{message_id}
+    </delete>
+
+    <update id="updateGuestbook">
+        update guestbook set message_title=#{message_title}, message_content=#{message_content},  message_edit_time=#{message_edit_time} where message_id=#{message_id}
+    </update>
+    <insert id="addGuestbook">
+        INSERT INTO `guestbook` (`message_title`, `message_content`, `message_create_time`, `message_edit_time`, `user_id`) VALUES (#{message_title}, #{message_content}, #{message_create_time}, #{message_edit_time}, #{user_id})
+    </insert>
+
+<!--    <update id="updateUser">-->
+<!--        update `user` set user_name=#{user_name}, user_password=#{user_password}, user_email=#{user_email}, user_telephone=#{user_telephone} WHERE user_id = #{user_id}-->
+<!--    </update>-->
+
 </mapper>

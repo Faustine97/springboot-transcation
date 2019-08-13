@@ -17,6 +17,9 @@
     </style>
 </head>
 <body>
+<%--角色：${sessionScope.user_role}<br>--%>
+<%--组：${sessionScope.user_group}<br>--%>
+
 <div style="float:right">
     <ul>
         <li><a>当前用户:${sessionScope.user}</a></li>
@@ -46,7 +49,7 @@
             <td>更新</td>
         </tr>
         <c:forEach items="${sessionScope.Guestbooks}" var="book" varStatus="i">
-        <form action="/message_board_spring_mybatis02/GuestbookListServlet" method="get">
+        <form action="" method="post">
             <input type="text" name="btnStyle" value="" style="display: none">
             <input type="text" name="website" value="message_list.jsp" style="display: none">
             <tr>
@@ -57,12 +60,12 @@
                 <td>${book.message_edit_time}<input name="messageEditTime" value="${book.message_edit_time}" style="display: none"></td>
                 <td>
                     <c:if test="${book.group==sessionScope.user_group && sessionScope.user_group!='guest' || sessionScope.user_role=='admin'}">
-                        <input type="submit" value="删除" onclick="this.form.btnStyle.value='delete'">
+                        <input type="submit" value="删除" onclick="this.form.action='/deleteGuestbook'">
                     </c:if>
                 </td>
                 <td>
                     <c:if test="${book.group==sessionScope.user_group && sessionScope.user_group!='guest' || sessionScope.user_role=='admin'}">
-                        <input type="submit" value="更新" onclick="this.form.btnStyle.value='update'">
+                        <input type="submit" value="更新" onclick="this.form.action='/updateGuestbook'">
                     </c:if>
                 </td>
             </tr>

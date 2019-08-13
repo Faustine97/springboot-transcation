@@ -7,6 +7,7 @@ import com.ucar.train.test.vo.User;
 import com.ucar.train.test.vo.UserInfo;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface UserService {
@@ -29,5 +30,10 @@ public interface UserService {
     boolean deleteRolePerm(String ROLE_NAME, String PERM_NAME);
     void userAddRole(String ROLE_NAME, String USER_NAME);
     List<String> getUserPerm(String name);
-
+    List<String> getUserRole(String name);
+    List<String> getUserGroup(String name);
+    void deleteGuestbook(int message_id);
+    void updateGuestbook(String message_title, String message_content, Timestamp message_edit_time, int message_id);
+    void addGuestbook(String message_title, String message_content, Timestamp message_create_time,Timestamp message_edit_time, int user_id);
+//    void updateUser(String user_name, String user_password, String user_email, String user_telephone, int user_id);
 }

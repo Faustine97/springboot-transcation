@@ -20,7 +20,7 @@
         <li><a href="/login">退出</a></li>
     </ul>
 </div>
-<form action="/login_check">
+<form action="/login_check" method="post">
     账号：<input type="text" name="user"> <br>
     密码：<input type="password" name="password"> <br>
     <input type="submit" value="登录">${sessionScope.error}

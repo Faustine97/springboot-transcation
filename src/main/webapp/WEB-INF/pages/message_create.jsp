@@ -26,7 +26,7 @@
     </tr>
 
     <c:forEach items="${sessionScope.Guestbook}" var="book">
-        <form action="/message_board_spring_mybatis02/GuestbookListServlet" method="get">
+        <form action="/message_create_update_guestbook" method="post">
             <input type="text" name="btnStyle" value="" style="display: none">
             <input type="text" name="website" value="message_create.jsp" style="display: none">
             <tr>
@@ -42,7 +42,7 @@
 </table>
 
 <br>
-    <form action="/message_board_spring_mybatis02/GuestbookCreateServlet">
+    <form action="/add_guestbook" method="post">
         <table border="1" cellspacing="0">
             <input type="text" name="website" value="message_create.jsp" style="display: none">
             <tr>
