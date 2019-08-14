@@ -31,6 +31,19 @@ public class AdminController {
         }
 
     }
+    @RequestMapping("/delete_role")
+    public String deleteRole(HttpServletRequest request)
+    {
+        try {
+            String role = request.getParameter("role");
+            userService.deleteRole(role);
+            return "success";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "fail";
+        }
+    }
+
     @RequestMapping("/add_role_perm")
     public String AddRolePerm(HttpServletRequest request)
     {
@@ -87,5 +100,7 @@ public class AdminController {
         }
 
     }
+
+
 
 }

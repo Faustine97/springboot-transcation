@@ -26,6 +26,7 @@ public interface UserService {
 //    void updateUser(String name, String pwd, String email, String tel);
     void updateUser(User user);
     void addRole(String ROLE_NAME, String ROLE_INFO);
+    void deleteRole(String ROLE_NAME);
     void addRolePerm(String ROLE_NAME, String PERM_NAME);
     boolean deleteRolePerm(String ROLE_NAME, String PERM_NAME);
     void userAddRole(String ROLE_NAME, String USER_NAME);

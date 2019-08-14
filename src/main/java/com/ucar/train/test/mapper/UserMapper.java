@@ -29,6 +29,7 @@ public interface UserMapper {
     void updateUser(User user);
     //void updateUser(@Param("user_name") String name, @Param("user_password") String pwd, @Param("user_email") String email, @Param("user_telephone") String tel,@Param("user_name2") String name2);
     void addRole(String ROLE_NAME, String ROLE_INFO);
+    void deleteRole(String ROLE_NAME);
     void addRolePerm(String ROLE_NAME, String PERM_NAME);
     int deleteRolePerm(String ROLE_NAME, String PERM_NAME);
     void userAddRole(String ROLE_NAME,String USER_NAME);

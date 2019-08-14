@@ -107,6 +107,10 @@ public class UserServiceImpl implements UserService {
     public void addRole(String ROLE_NAME, String ROLE_INFO){
         userMapper.addRole(ROLE_NAME,ROLE_INFO);
     }
+    public void deleteRole(String ROLE_NAME)
+    {
+        userMapper.deleteRole(ROLE_NAME);
+    }
     public void addRolePerm(String ROLE_NAME, String PERM_NAME){
         userMapper.addRolePerm(ROLE_NAME,PERM_NAME);
     }

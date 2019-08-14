@@ -26,6 +26,13 @@
     </form>
 </ul>
 <ul>
+    <form action="/delete_role">
+        <span>删除角色</span><br>
+        角色名：<input type="text" name="role"><br>
+        <input type="submit" value="提交"><br>
+    </form>
+</ul>
+<ul>
     <form action="/add_role_perm">
         <span>给角色添加权力</span><br>
         角色名：<input type="text" name="role"><br>

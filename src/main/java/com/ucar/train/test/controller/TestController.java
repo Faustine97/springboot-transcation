@@ -29,7 +29,7 @@ public class TestController {
     @RequestMapping("/test2")
     public void test2()
     {
-        userService.userDeleteRole("Tom","admin");
+        userService.deleteRole("asdf");
     }
 
 }
