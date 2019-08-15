@@ -27,7 +27,7 @@
         <td>操作用户</td>
         <td>操作名称</td>
         <td>操作时间</td>
-        <td>操作耗时</td>
+        <td>操作耗时(ms)</td>
         <td>操作结果</td>
     </tr>
     <c:forEach items="${sessionScope.SysLog}" var="syslog">

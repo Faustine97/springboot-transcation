@@ -28,6 +28,7 @@ public class AdminInterceptor implements HandlerInterceptor {
                 case "/message_create" : response.sendRedirect("/message_create_perm_error");break;
                 case "/deleteGuestbook" : response.sendRedirect("/deleteGuestbook_perm_error");break;
                 case "/updateGuestbook" : response.sendRedirect("/updateGuestbook_perm_error");break;
+                case "/syslog" : response.sendRedirect("/syslog_perm_error");break;
             }
             return false;
         }

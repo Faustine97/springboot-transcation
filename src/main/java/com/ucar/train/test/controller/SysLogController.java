@@ -1,6 +1,5 @@
 package com.ucar.train.test.controller;
 
-import com.sun.deploy.net.HttpResponse;
 import com.ucar.train.test.services.UserService;
 import com.ucar.train.test.vo.SysLog;
 import org.springframework.beans.factory.annotation.Autowired;

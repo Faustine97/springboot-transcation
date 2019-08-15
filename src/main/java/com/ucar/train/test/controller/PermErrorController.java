@@ -32,14 +32,21 @@ public class PermErrorController {
     }
     @MyLog(operation = "删除留言" ,result = "失败")
     @RequestMapping("/deleteGuestbook_perm_error")
-    public String deleteGuestbook_perm_errorPermError()
+    public String deleteGuestbookPermError()
     {
         return "perm_error";
     }
     @MyLog(operation = "更新留言" ,result = "失败")
     @RequestMapping("/updateGuestbook_perm_error")
-    public String updateGuestbook_perm_errorPermError()
+    public String updateGuestbookPermError()
     {
         return "perm_error";
     }
+
+    @RequestMapping("/syslog_perm_error")
+    public String syslogPermError()
+    {
+        return "perm_error";
+    }
+
 }
