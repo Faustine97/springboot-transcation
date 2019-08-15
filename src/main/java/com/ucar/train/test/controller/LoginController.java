@@ -56,6 +56,7 @@ public class LoginController {
             session.setAttribute("perms", perm);
             session.setAttribute("User",user1);
             session.setAttribute("page",0);
+            session.setAttribute("syslog_page",0);
             try {
                 response.sendRedirect("/login_success");
             } catch (IOException e) {

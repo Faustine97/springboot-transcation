@@ -37,4 +37,6 @@ public interface UserService {
 //    void updateUser(String user_name, String user_password, String user_email, String user_telephone, int user_id);
     int getAllGuestbooksCount();
     void addSyslog(SysLog sysLog);
+    List<SysLog> selSyslog(int start, int count);
+    int getAllSyslogsCount();
 }

@@ -42,4 +42,6 @@ public interface UserMapper {
     int getAllGuestbooksCount();
 
     void addSyslog(SysLog sysLog);
+    List<SysLog> selSyslog(int start, int count);
+    int getAllSyslogsCount();
 }

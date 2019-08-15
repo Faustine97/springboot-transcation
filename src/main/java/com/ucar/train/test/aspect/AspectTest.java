@@ -35,7 +35,6 @@ public class AspectTest {
     @Before("cutMethod()")
     public void begin() {
         start = new Timestamp(System.currentTimeMillis());
-        System.out.println("==@Before== start: " +start);
     }
 
 //    @AfterReturning("cutMethod()")
