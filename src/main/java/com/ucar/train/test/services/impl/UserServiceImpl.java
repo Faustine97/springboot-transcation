@@ -171,5 +171,9 @@ public class UserServiceImpl implements UserService {
     {
         return userMapper.getAllSyslogsCount();
     }
+    public List<SysLog> selSyslogWithOperation(String operation)
+    {
+        return userMapper.selSyslogWithOperation(operation);
+    }
 
 }

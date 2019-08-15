@@ -39,4 +39,5 @@ public interface UserService {
     void addSyslog(SysLog sysLog);
     List<SysLog> selSyslog(int start, int count);
     int getAllSyslogsCount();
+    List<SysLog> selSyslogWithOperation(String operation);
 }

@@ -12,6 +12,12 @@
     <title>Title</title>
 </head>
 <body>
+<div>
+    <form action="/search_syslog">
+        <input type="text" name="operation">
+        <input type="submit" value="搜索" >
+    </form>
+</div>
 <div style="float: right">
     <a href="/message_list">返回</a>
 </div>

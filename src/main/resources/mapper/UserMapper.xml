@@ -104,6 +104,12 @@
     <select id="getAllSyslogsCount" resultType="Integer">
         select count(*) from syslog
     </select>
+
+    <select id="selSyslogWithOperation" resultType="com.ucar.train.test.vo.SysLog">
+        select * from syslog where operation = #{operation}
+    </select>
+
+
     <!--    <update id="updateUser">-->
     <!--        update `user` set user_name=#{user_name}, user_password=#{user_password}, user_email=#{user_email}, user_telephone=#{user_telephone} WHERE user_id = #{user_id}-->
     <!--    </update>-->
