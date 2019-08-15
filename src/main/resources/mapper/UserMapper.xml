@@ -93,6 +93,9 @@
     <select id="getAllGuestbooksCount" resultType="Integer">
         SELECT count(*) from guestbook
     </select>
+    <insert id="addSyslog" parameterType="com.ucar.train.test.vo.SysLog">
+        INSERT INTO `syslog`(`user_id`, `user_name`, `operation`, `start`, `end`, `diff_time`, `result`) VALUES (#{user_id}, #{user_name}, #{operation}, #{start}, #{end}, #{diff_time}, #{result})
+    </insert>
     <!--    <update id="updateUser">-->
     <!--        update `user` set user_name=#{user_name}, user_password=#{user_password}, user_email=#{user_email}, user_telephone=#{user_telephone} WHERE user_id = #{user_id}-->
     <!--    </update>-->

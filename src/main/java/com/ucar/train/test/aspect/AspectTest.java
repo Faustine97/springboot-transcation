@@ -1,10 +1,12 @@
 package com.ucar.train.test.aspect;
 import com.ucar.train.test.function.MyLog;
+import com.ucar.train.test.services.UserService;
 import com.ucar.train.test.vo.SysLog;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
@@ -20,7 +22,8 @@ import java.sql.Timestamp;
 @Aspect
 @Component
 public class AspectTest {
-
+    @Autowired
+    private UserService userService;
 //    @Pointcut("execution(public * com.ucar.train.test.controller.*.*(..))")
     Timestamp start;
     Timestamp end;
@@ -64,7 +67,8 @@ public class AspectTest {
         end = new Timestamp(System.currentTimeMillis());
         long diff_time = end.getTime()-start.getTime();
         SysLog sysLog = new SysLog(user_id,user_name,myLog.operation(),start,end,diff_time,myLog.result());
-        System.out.println(sysLog);
+//        System.out.println(sysLog);
+        userService.addSyslog(sysLog);
     }
 
 

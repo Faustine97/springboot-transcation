@@ -4,10 +4,7 @@ import com.ucar.train.test.dto.UserDTO;
 import com.ucar.train.test.mapper.UserMapper;
 import com.ucar.train.test.services.UserService;
 import com.ucar.train.test.util.JdbcHelper;
-import com.ucar.train.test.vo.Guestbook;
-import com.ucar.train.test.vo.Role;
-import com.ucar.train.test.vo.User;
-import com.ucar.train.test.vo.UserInfo;
+import com.ucar.train.test.vo.*;
 import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -162,9 +159,9 @@ public class UserServiceImpl implements UserService {
     {
         return userMapper.getAllGuestbooksCount();
     }
-//    public void updateUser(String user_name, String user_password, String user_email, String user_telephone, int user_id)
-//    {
-//        userMapper.updateUser(user_name,user_password,user_email,user_telephone,user_id);
-//    }
+    public void addSyslog(SysLog sysLog)
+    {
+        userMapper.addSyslog(sysLog);
+    }
 
 }

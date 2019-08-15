@@ -1,10 +1,7 @@
 package com.ucar.train.test.services;
 
 import com.ucar.train.test.dto.UserDTO;
-import com.ucar.train.test.vo.Guestbook;
-import com.ucar.train.test.vo.Role;
-import com.ucar.train.test.vo.User;
-import com.ucar.train.test.vo.UserInfo;
+import com.ucar.train.test.vo.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
@@ -39,4 +36,5 @@ public interface UserService {
     void addGuestbook(String message_title, String message_content, Timestamp message_create_time,Timestamp message_edit_time, int user_id);
 //    void updateUser(String user_name, String user_password, String user_email, String user_telephone, int user_id);
     int getAllGuestbooksCount();
+    void addSyslog(SysLog sysLog);
 }

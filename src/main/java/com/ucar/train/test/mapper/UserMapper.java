@@ -1,10 +1,7 @@
 package com.ucar.train.test.mapper;
 
 import com.ucar.train.test.dto.UserDTO;
-import com.ucar.train.test.vo.Guestbook;
-import com.ucar.train.test.vo.Role;
-import com.ucar.train.test.vo.User;
-import com.ucar.train.test.vo.UserInfo;
+import com.ucar.train.test.vo.*;
 import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
@@ -43,4 +40,6 @@ public interface UserMapper {
     void updateGuestbook(String message_title, String message_content, Timestamp message_edit_time, int message_id);
     void addGuestbook(String message_title, String message_content, Timestamp message_create_time,Timestamp message_edit_time, int user_id);
     int getAllGuestbooksCount();
+
+    void addSyslog(SysLog sysLog);
 }
