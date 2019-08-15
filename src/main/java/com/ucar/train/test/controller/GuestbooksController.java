@@ -1,5 +1,6 @@
 package com.ucar.train.test.controller;
 
+import com.ucar.train.test.function.MyLog;
 import com.ucar.train.test.services.UserService;
 import com.ucar.train.test.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class GuestbooksController {
     @Autowired
     UserService userService;
 
+    @MyLog(operation = "删除留言", result = "成功")
     @RequestMapping("/deleteGuestbook")
     public String deleteGuestbook(HttpServletRequest request, HttpServletResponse response)
     {
@@ -31,6 +33,7 @@ public class GuestbooksController {
         return "message_list";
     }
 
+    @MyLog(operation = "更新留言",result = "成功")
     @RequestMapping("/updateGuestbook")
     public String updateGuestbook(HttpServletRequest request, HttpServletResponse response)
     {
@@ -62,6 +65,7 @@ public class GuestbooksController {
         return "message_create";
     }
 
+    @MyLog(operation = "添加留言",result = "成功")
     @RequestMapping("/add_guestbook")
     public String messageCreateAddGuestbook(HttpServletRequest request, HttpServletResponse response)
     {

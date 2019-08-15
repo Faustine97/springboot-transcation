@@ -1,5 +1,6 @@
 package com.ucar.train.test.controller;
 
+import com.ucar.train.test.function.MyLog;
 import com.ucar.train.test.services.UserService;
 import com.ucar.train.test.vo.User;
 import com.ucar.train.test.vo.UserInfo;
@@ -18,6 +19,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @MyLog(operation = "访问信息编辑界面", result = "成功")
     @RequestMapping("/user_edit")
     public String userEdit(HttpSession session)
     {
@@ -45,6 +48,7 @@ public class UserController {
         }
     }
 
+    @MyLog(operation = "访问用户列表界面", result = "成功")
     @RequestMapping("/user_info")
     public String userInfo(HttpSession session)
     {

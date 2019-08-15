@@ -52,6 +52,7 @@ public class LoginController {
             List<String> perm = userService.getUserPerm(user);
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+            session.setAttribute("user_id", user1.getUser_id());
             session.setAttribute("perms", perm);
             session.setAttribute("User",user1);
             session.setAttribute("page",0);

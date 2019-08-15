@@ -12,6 +12,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.lang.reflect.Method;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -54,17 +55,16 @@ public class AspectTest {
         Method method = signature.getMethod();
 //        获取操作
         MyLog myLog = method.getAnnotation(MyLog.class);
+        RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+        ServletRequestAttributes sra = (ServletRequestAttributes) ra;
+        HttpServletRequest request = sra.getRequest();
+        HttpSession session = request.getSession();
+        int user_id = (Integer)session.getAttribute("user_id");
+        String user_name = (String) session.getAttribute("user");
         end = new Timestamp(System.currentTimeMillis());
-
-
-
-        if(myLog!=null)
-        {
-            System.out.println("==@After== 操作: "+myLog.operation());
-            System.out.println("==@After== 结果: "+myLog.result());
-        }
-        System.out.println("==@After== end: "+end);
-        System.out.println("==@After== 耗时: "+ (end.getTime()-start.getTime()));
+        long diff_time = end.getTime()-start.getTime();
+        SysLog sysLog = new SysLog(user_id,user_name,myLog.operation(),start,end,diff_time,myLog.result());
+        System.out.println(sysLog);
     }
 
 

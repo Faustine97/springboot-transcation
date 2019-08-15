@@ -50,7 +50,9 @@
     <insert id="addRole" >
        insert into role VALUES(#{ROLE_NAME},#{ROLE_INFO})
     </insert>
-
+    <delete id="deleteRole">
+        delete from role where role_name=#{role_name}
+    </delete>
     <insert id="addRolePerm">
         insert into role_perm VALUES(#{ROLE_NAME},#{PERM_NAME})
     </insert>

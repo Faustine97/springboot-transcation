@@ -1,5 +1,6 @@
 package com.ucar.train.test.controller;
 
+import com.ucar.train.test.function.MyLog;
 import com.ucar.train.test.services.UserService;
 import com.ucar.train.test.services.impl.UserServiceImpl;
 import com.ucar.train.test.vo.Guestbook;
@@ -17,6 +18,8 @@ import java.util.List;
 public class MessageController {
     @Autowired
     private UserService userService;
+
+    @MyLog(operation = "访问留言界面", result = "成功")
     @RequestMapping("/message_create")
     public String messageCreate(HttpSession session)
     {
