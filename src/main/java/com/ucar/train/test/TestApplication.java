@@ -3,8 +3,11 @@ package com.ucar.train.test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Service;
 
 @SpringBootApplication
+
+
 @MapperScan("com.ucar.train.test.mapper")
 public class TestApplication {
 

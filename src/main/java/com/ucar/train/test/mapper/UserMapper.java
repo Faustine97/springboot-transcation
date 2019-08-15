@@ -6,13 +6,14 @@ import com.ucar.train.test.vo.Role;
 import com.ucar.train.test.vo.User;
 import com.ucar.train.test.vo.UserInfo;
 import org.apache.ibatis.annotations.Param;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.sql.Timestamp;
 import java.util.List;
 
-//@Repository
+
 public interface UserMapper {
 
     List<UserDTO> getAllUser();
