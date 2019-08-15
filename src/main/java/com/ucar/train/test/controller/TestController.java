@@ -1,5 +1,6 @@
 package com.ucar.train.test.controller;
 
+import com.ucar.train.test.function.MyLog;
 import com.ucar.train.test.services.UserService;
 import com.ucar.train.test.util.GsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,16 @@ public class TestController {
         return driverClassName;
     }
 
+
+    @MyLog(value = "测试")
     @RequestMapping("/test")
     public String getAllUser(){
-        return GsonUtils.toJson(userService.getAllGuestbooksCount());
+
+        return GsonUtils.toJson(new Timestamp(System.currentTimeMillis()));
     }
+
     @RequestMapping("/test2")
+   //
     public void test2()
     {
         userService.deleteRole("asdf");

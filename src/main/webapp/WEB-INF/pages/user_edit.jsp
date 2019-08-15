@@ -30,7 +30,7 @@
             <td><input type="text" name="user_telephone" value="${sessionScope.user_edit.user_telephone}"></td>
         </tr>
         <tr>
-            <td rowspan="4"><input type="submit" name="" id=""value="更新"></td>
+            <td rowspan="4"><input type="submit" name="" user_id=""value="更新"></td>
         </tr>
     </table>
 

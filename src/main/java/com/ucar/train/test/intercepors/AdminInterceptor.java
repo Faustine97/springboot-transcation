@@ -29,17 +29,7 @@ public class AdminInterceptor implements HandlerInterceptor {
             response.sendRedirect("/perm_error");
             return false;
         }
-//        String user = (String) session.getAttribute("user");
-//        if (perms.contains("admin") ){
-//            // request.getRequestDispatcher("/login").forward(request, response);
-//            //如果session里有user，表示该用户已经登陆，放行，用户即可继续调用自己需要的接口
-//            return true;
-//        }else {
-//            //这个方法返回false表示忽略当前请求，如果一个用户调用了需要登陆才能使用的接口，如果他没有登陆这里会直接忽略掉
-//            //当然你可以利用response给用户返回一些提示信息，告诉他没登陆
-//            request.getRequestDispatcher("/message_list").forward(request, response);
-//            return false;
-//        }
+
     }
 
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable ModelAndView modelAndView) throws Exception {

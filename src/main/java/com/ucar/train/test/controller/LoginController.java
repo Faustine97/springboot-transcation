@@ -1,5 +1,6 @@
 package com.ucar.train.test.controller;
 
+import com.ucar.train.test.function.MyLog;
 import com.ucar.train.test.services.UserService;
 import com.ucar.train.test.services.impl.UserServiceImpl;
 import com.ucar.train.test.vo.Guestbook;
@@ -26,8 +27,9 @@ public class LoginController {
         session.setAttribute("user",null);
         session.setAttribute("user_role",null);
         session.setAttribute("page",null);
-        //session.setAttribute("user", );
+
         return "login";
+
     }
 
     @RequestMapping("/log_out")
@@ -38,7 +40,7 @@ public class LoginController {
 
     @RequestMapping("/login_check")
 
-    public String loginCheck(HttpServletRequest request, HttpServletResponse response)
+    public void loginCheck(HttpServletRequest request, HttpServletResponse response)
     {
         UserServiceImpl impl = new UserServiceImpl();
         String user = request.getParameter("user");
@@ -54,12 +56,42 @@ public class LoginController {
             session.setAttribute("User",user1);
             session.setAttribute("page",0);
             try {
-                response.sendRedirect("/message_list");
+                response.sendRedirect("/login_success");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return "message_list";
         }
-        return "login";
+        else{
+            try{
+                response.sendRedirect("/login_fail");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
     }
+
+    @MyLog(operation = "登录",result = "成功")
+    @RequestMapping("/login_success")
+    public void LoginSuccess(HttpServletResponse response)
+    {
+        try{
+            response.sendRedirect("/message_list");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @MyLog(operation = "登录",result = "失败")
+    @RequestMapping("/login_fail")
+    public void LoginFail(HttpServletResponse response)
+    {
+        try{
+            response.sendRedirect("/login");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
 }

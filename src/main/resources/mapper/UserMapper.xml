@@ -2,35 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ucar.train.test.mapper.UserMapper" >
 
-<!--    <resultMap id="mapper" type="com.ucar.train.test.vo.User">-->
-<!--        <id column="id" property="id"/>-->
-<!--        <result property="name" column="psw"/>-->
-<!--        <result property="psw" column="psw"/>-->
-<!--        <result property="createTime" column="create_time"/>-->
-<!--        <result property="modifyTime" column="modify_time"/>-->
-<!--    </resultMap>-->
+    <!--    <resultMap id="mapper" type="com.ucar.train.test.vo.User">-->
+    <!--        <id column="id" property="id"/>-->
+    <!--        <result property="name" column="psw"/>-->
+    <!--        <result property="psw" column="psw"/>-->
+    <!--        <result property="createTime" column="create_time"/>-->
+    <!--        <result property="modifyTime" column="modify_time"/>-->
+    <!--    </resultMap>-->
 
     <resultMap id="role" type="com.ucar.train.test.vo.Role">
         <result property="ROLE_NAME" column="ROLE_NAME"/>
         <result property="ROLE_INFO" column="ROLE_INFO"/>
     </resultMap>
 
-<!--    <resultMap id="user" type="com.ucar.train.test.vo.User">-->
-<!--        <result property="user_id" column="user_id"/>-->
-<!--        <result property="user_name" column="user_name"/>-->
-<!--        <result property="user_password" column="user_password"/>-->
-<!--        <result property="user_email" column="user_email"/>-->
-<!--        <result property="user_telephone" column="user_telephone"/>-->
-<!--    </resultMap>-->
+    <!--    <resultMap id="user" type="com.ucar.train.test.vo.User">-->
+    <!--        <result property="user_id" column="user_id"/>-->
+    <!--        <result property="user_name" column="user_name"/>-->
+    <!--        <result property="user_password" column="user_password"/>-->
+    <!--        <result property="user_email" column="user_email"/>-->
+    <!--        <result property="user_telephone" column="user_telephone"/>-->
+    <!--    </resultMap>-->
 
     <select id="getUser" resultType="com.ucar.train.test.vo.User">
         select * from user where user_name = #{user_name};
     </select>
-    
+
     <select id="getAllRole" resultType="com.ucar.train.test.vo.Role">
         select * from role
     </select>
-    
+
     <select id="getAllGuestbook" resultType="com.ucar.train.test.vo.Guestbook">
         select message_id,message_title,message_content,message_create_time,message_edit_time,guestbook.user_id,`group` from guestbook inner join user_group  on guestbook.user_id = user_group.user_id limit #{start},#{count}
     </select>
@@ -50,10 +50,6 @@
     <insert id="addRole" >
        insert into role VALUES(#{ROLE_NAME},#{ROLE_INFO})
     </insert>
-
-    <delete id="deleteRole">
-        delete from role where ROLE_NAME=#{ROLE_NAME}
-    </delete>
 
     <insert id="addRolePerm">
         insert into role_perm VALUES(#{ROLE_NAME},#{PERM_NAME})
@@ -95,8 +91,8 @@
     <select id="getAllGuestbooksCount" resultType="Integer">
         SELECT count(*) from guestbook
     </select>
-<!--    <update id="updateUser">-->
-<!--        update `user` set user_name=#{user_name}, user_password=#{user_password}, user_email=#{user_email}, user_telephone=#{user_telephone} WHERE user_id = #{user_id}-->
-<!--    </update>-->
+    <!--    <update id="updateUser">-->
+    <!--        update `user` set user_name=#{user_name}, user_password=#{user_password}, user_email=#{user_email}, user_telephone=#{user_telephone} WHERE user_id = #{user_id}-->
+    <!--    </update>-->
 
 </mapper>
