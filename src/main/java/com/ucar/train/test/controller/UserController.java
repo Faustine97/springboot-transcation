@@ -31,6 +31,7 @@ public class UserController {
         return "user_edit";
     }
 
+    @MyLog(operation = "更新个人信息", result = "成功")
     @RequestMapping("/user_edit_update")
     public void userEditUpdate(HttpServletRequest request, HttpServletResponse response)
     {
