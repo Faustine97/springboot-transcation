@@ -73,7 +73,7 @@ public class LoginController {
 
     }
 
-    @MyLog(operation = "登录",result = "成功")
+    @MyLog(operation = "用户登录",result = "成功")
     @RequestMapping("/login_success")
     public void LoginSuccess(HttpServletResponse response)
     {
@@ -84,7 +84,7 @@ public class LoginController {
         }
     }
 
-    @MyLog(operation = "登录",result = "失败")
+    @MyLog(operation = "用户登录",result = "失败")
     @RequestMapping("/login_fail")
     public void LoginFail(HttpServletResponse response)
     {

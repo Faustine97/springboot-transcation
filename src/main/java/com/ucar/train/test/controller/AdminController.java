@@ -98,13 +98,13 @@ public class AdminController {
             }
         }
     }
-    @MyLog(operation = "添加角色权限" ,result = "成功")
+    @MyLog(operation = "增加角色权限" ,result = "成功")
     @RequestMapping("/add_role_perm_success")
     public String addRolePermSuccess()
     {
         return "success";
     }
-    @MyLog(operation = "添加角色权限" ,result = "失败")
+    @MyLog(operation = "增加角色权限" ,result = "失败")
     @RequestMapping("/add_role_perm_fail")
     public String addRolePermFail()
     {
@@ -160,13 +160,13 @@ public class AdminController {
             }
         }
     }
-    @MyLog(operation = "给用户添加角色" ,result = "成功")
+    @MyLog(operation = "增加用户角色" ,result = "成功")
     @RequestMapping("/user_add_role_success")
     public String userAddRoleSuccess()
     {
         return "success";
     }
-    @MyLog(operation = "给用户添加角色" ,result = "失败")
+    @MyLog(operation = "增加用户角色" ,result = "失败")
     @RequestMapping("/user_add_role_fail")
     public String userAddRoleFail()
     {
@@ -190,13 +190,13 @@ public class AdminController {
             }
         }
     }
-    @MyLog(operation = "给用户删除角色" ,result = "成功")
+    @MyLog(operation = "删除用户角色" ,result = "成功")
     @RequestMapping("/user_delete_role_success")
     public String userDeleteRoleSuccess()
     {
         return "success";
     }
-    @MyLog(operation = "给用户删除角色" ,result = "失败")
+    @MyLog(operation = "删除用户角色" ,result = "失败")
     @RequestMapping("/user_delete_role_fail")
     public String userDeleteRoleFail()
     {

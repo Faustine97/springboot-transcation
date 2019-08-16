@@ -36,7 +36,7 @@ public class PermErrorController {
     {
         return "perm_error";
     }
-    @MyLog(operation = "更新留言" ,result = "失败")
+    @MyLog(operation = "修改留言" ,result = "失败")
     @RequestMapping("/updateGuestbook_perm_error")
     public String updateGuestbookPermError()
     {

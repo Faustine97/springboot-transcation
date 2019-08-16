@@ -106,7 +106,7 @@
     </select>
 
     <select id="selSyslogWithOperation" resultType="com.ucar.train.test.vo.SysLog">
-        select * from syslog where operation = #{operation}
+        select * from syslog where operation like concat('%',#{operation},'%')
     </select>
 
 

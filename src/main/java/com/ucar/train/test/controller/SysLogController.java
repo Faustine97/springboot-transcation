@@ -1,5 +1,6 @@
 package com.ucar.train.test.controller;
 
+import com.ucar.train.test.function.MyLog;
 import com.ucar.train.test.services.UserService;
 import com.ucar.train.test.vo.SysLog;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class SysLogController {
     @Autowired
     private UserService userService;
 
+    @MyLog(operation = "查看日志", result = "成功")
     @RequestMapping("/syslog")
     public String syslog(HttpSession session)
     {
@@ -59,6 +61,7 @@ public class SysLogController {
         }
     }
 
+    @MyLog(operation = "查询日志", result = "成功")
     @RequestMapping("/search_syslog")
     public String searchSyslog(HttpServletRequest request, HttpServletResponse response)
     {
