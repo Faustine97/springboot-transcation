@@ -81,7 +81,7 @@
     </insert>
 
     <select id="selSyslog" resultType="com.ucar.train.test.vo.SysLog">
-        SELECT * from syslog limit #{start}, #{count}
+        SELECT * from syslog order by start desc limit #{start}, #{count}
     </select>
 
     <select id="getAllSyslogsCount" resultType="Integer">
@@ -93,8 +93,5 @@
     </select>
 
 
-    <!--    <update id="updateUser">-->
-    <!--        update `user` set user_name=#{user_name}, user_password=#{user_password}, user_email=#{user_email}, user_telephone=#{user_telephone} WHERE user_id = #{user_id}-->
-    <!--    </update>-->
 
 </mapper>
