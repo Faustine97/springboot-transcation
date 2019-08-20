@@ -39,7 +39,7 @@
 </form>
 <br>
 
-<form action="">
+<form action="/charge">
     金额：<input type="text" name="money">
     <input type="submit" value="充值"><br><br><br>
 </form>

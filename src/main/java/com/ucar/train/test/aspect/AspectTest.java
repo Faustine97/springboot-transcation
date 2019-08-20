@@ -21,7 +21,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 
 @Aspect
-@Component
+//@Component
 public class AspectTest {
     @Autowired
     private UserService userService;

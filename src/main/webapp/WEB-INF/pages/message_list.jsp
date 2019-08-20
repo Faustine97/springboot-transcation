@@ -29,6 +29,7 @@
         <li><a href="/login">退出</a></li>
         <li><a href="/admin">管理员后台</a></li>
         <li><a href="/syslog">日志管理</a></li>
+        <li><a href="/consuming_record">消费记录</a> </li>
     </ul>
 </div>
 
