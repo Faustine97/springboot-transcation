@@ -20,9 +20,8 @@ public class GuestbooksController {
 
     @MyLog(operation = "删除留言", result = "成功")
     @RequestMapping("/deleteGuestbook")
-    public String deleteGuestbook(HttpServletRequest request, HttpServletResponse response)
-    {
-        int id = Integer.parseInt(request.getParameter("messageId")) ;
+    public String deleteGuestbook(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("messageId"));
         System.out.println(id);
         userService.deleteGuestbook(id);
         try {
@@ -33,15 +32,14 @@ public class GuestbooksController {
         return "message_list";
     }
 
-    @MyLog(operation = "修改留言",result = "成功")
+    @MyLog(operation = "修改留言", result = "成功")
     @RequestMapping("/updateGuestbook")
-    public String updateGuestbook(HttpServletRequest request, HttpServletResponse response)
-    {
-        int id = Integer.parseInt(request.getParameter("messageId")) ;
+    public String updateGuestbook(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("messageId"));
         String messageTitle = request.getParameter("messageTitle");
         String messageContent = request.getParameter("messageContent");
         Timestamp messageEditTime = new Timestamp(System.currentTimeMillis());
-        userService.updateGuestbook(messageTitle,messageContent,messageEditTime,id);
+        userService.updateGuestbook(messageTitle, messageContent, messageEditTime, id);
         try {
             response.sendRedirect("/message_list");
         } catch (IOException e) {
@@ -51,12 +49,12 @@ public class GuestbooksController {
     }
 
     @RequestMapping("/message_create_update_guestbook")
-    public String messageCreateUpdateGuestbook(HttpServletRequest request,HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("messageId")) ;
+    public String messageCreateUpdateGuestbook(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("messageId"));
         String messageTitle = request.getParameter("messageTitle");
         String messageContent = request.getParameter("messageContent");
         Timestamp messageEditTime = new Timestamp(System.currentTimeMillis());
-        userService.updateGuestbook(messageTitle,messageContent,messageEditTime,id);
+        userService.updateGuestbook(messageTitle, messageContent, messageEditTime, id);
         try {
             response.sendRedirect("/message_create");
         } catch (IOException e) {
@@ -65,18 +63,17 @@ public class GuestbooksController {
         return "message_create";
     }
 
-    @MyLog(operation = "增加留言",result = "成功")
+    @MyLog(operation = "增加留言", result = "成功")
     @RequestMapping("/add_guestbook")
-    public String messageCreateAddGuestbook(HttpServletRequest request, HttpServletResponse response)
-    {
+    public String messageCreateAddGuestbook(HttpServletRequest request, HttpServletResponse response) {
         String message_title = request.getParameter("message_title");
         String message_content = request.getParameter("message_content");
         Timestamp messageEditTime = new Timestamp(System.currentTimeMillis());
         HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("User");
+        User user = (User) session.getAttribute("User");
         System.out.println(user.toString());
         int id = user.getUser_id();
-        userService.addGuestbook(message_title,message_content,messageEditTime,messageEditTime, id);
+        userService.addGuestbook(message_title, message_content, messageEditTime, messageEditTime, id);
 
         try {
             response.sendRedirect("/message_create");

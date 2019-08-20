@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ucar.train.test.mapper.UserMapper" >
+<mapper namespace="com.ucar.train.test.mapper.UserMapper">
 
     <resultMap id="role" type="com.ucar.train.test.vo.Role">
         <result property="ROLE_NAME" column="ROLE_NAME"/>
@@ -16,22 +16,26 @@
     </select>
 
     <select id="getAllGuestbook" resultType="com.ucar.train.test.vo.Guestbook">
-        select message_id,message_title,message_content,message_create_time,message_edit_time,guestbook.user_id,`group` from guestbook inner join user_group  on guestbook.user_id = user_group.user_id limit #{start},#{count}
+        select message_id,message_title,message_content,message_create_time,message_edit_time,guestbook.user_id,`group`
+        from guestbook inner join user_group on guestbook.user_id = user_group.user_id limit #{start},#{count}
     </select>
 
     <select id="getAllUserInfo" resultType="com.ucar.train.test.vo.UserInfo">
-        select `user`.user_id, user_name, user_email, user_telephone, message_number from `user` INNER JOIN (SELECT user_id, count(*) as message_number from guestbook GROUP BY user_id) as t on `user`.user_id = t.user_id
+        select `user`.user_id, user_name, user_email, user_telephone, message_number from `user` INNER JOIN (SELECT
+        user_id, count(*) as message_number from guestbook GROUP BY user_id) as t on `user`.user_id = t.user_id
     </select>
 
     <select id="getUserGuestbooks" parameterType="String" resultType="com.ucar.train.test.vo.Guestbook">
-        select message_id,message_title,message_content,message_create_time,message_edit_time,guestbook.user_id,`group` from guestbook inner join user_group  on guestbook.user_id = user_group.user_id and user_name= #{user_name}
+        select message_id,message_title,message_content,message_create_time,message_edit_time,guestbook.user_id,`group`
+        from guestbook inner join user_group on guestbook.user_id = user_group.user_id and user_name= #{user_name}
     </select>
 
     <update id="updateUser" parameterType="com.ucar.train.test.vo.User">
-          UPDATE user SET user_name = #{user_name}, user_password = #{user_password}, user_email = #{user_email}, user_telephone = #{user_telephone} WHERE user_name = #{user_name}
+        UPDATE user SET user_name = #{user_name}, user_password = #{user_password}, user_email = #{user_email},
+        user_telephone = #{user_telephone} WHERE user_name = #{user_name}
     </update>
-    <insert id="addRole" >
-       insert into role VALUES(#{ROLE_NAME},#{ROLE_INFO})
+    <insert id="addRole">
+        insert into role VALUES(#{ROLE_NAME},#{ROLE_INFO})
     </insert>
     <delete id="deleteRole">
         delete from role where role_name=#{role_name}
@@ -52,7 +56,8 @@
         delete from user_role where USER_NAME=#{USER_NAME} and ROLE_NAME = #{ROLE_NAME}
     </delete>
     <select id="getUserPerm" resultType="String">
-        SELECT PERM_NAME from `user` INNER JOIN user_role on `user`.user_name=#{user_name} and `user`.user_name = user_role.USER_NAME INNER JOIN role_perm on user_role.ROLE_NAME = role_perm.ROLE_NAME  GROUP BY(PERM_NAME)
+        SELECT PERM_NAME from `user` INNER JOIN user_role on `user`.user_name=#{user_name} and `user`.user_name =
+        user_role.USER_NAME INNER JOIN role_perm on user_role.ROLE_NAME = role_perm.ROLE_NAME GROUP BY(PERM_NAME)
     </select>
 
     <select id="getUserRole" resultType="String">
@@ -68,16 +73,20 @@
     </delete>
 
     <update id="updateGuestbook">
-        update guestbook set message_title=#{message_title}, message_content=#{message_content},  message_edit_time=#{message_edit_time} where message_id=#{message_id}
+        update guestbook set message_title=#{message_title}, message_content=#{message_content},
+        message_edit_time=#{message_edit_time} where message_id=#{message_id}
     </update>
     <insert id="addGuestbook">
-        INSERT INTO `guestbook` (`message_title`, `message_content`, `message_create_time`, `message_edit_time`, `user_id`) VALUES (#{message_title}, #{message_content}, #{message_create_time}, #{message_edit_time}, #{user_id})
+        INSERT INTO `guestbook` (`message_title`, `message_content`, `message_create_time`, `message_edit_time`,
+        `user_id`) VALUES (#{message_title}, #{message_content}, #{message_create_time}, #{message_edit_time},
+        #{user_id})
     </insert>
     <select id="getAllGuestbooksCount" resultType="Integer">
         SELECT count(*) from guestbook
     </select>
     <insert id="addSyslog" parameterType="com.ucar.train.test.vo.SysLog">
-        INSERT INTO `syslog`(`user_id`, `user_name`, `operation`, `start`, `end`, `diff_time`, `result`) VALUES (#{user_id}, #{user_name}, #{operation}, #{start}, #{end}, #{diff_time}, #{result})
+        INSERT INTO `syslog`(`user_id`, `user_name`, `operation`, `start`, `end`, `diff_time`, `result`) VALUES
+        (#{user_id}, #{user_name}, #{operation}, #{start}, #{end}, #{diff_time}, #{result})
     </insert>
 
     <select id="selSyslog" resultType="com.ucar.train.test.vo.SysLog">
@@ -91,7 +100,6 @@
     <select id="selSyslogWithOperation" resultType="com.ucar.train.test.vo.SysLog">
         select * from syslog where operation like concat('%',#{operation},'%')
     </select>
-
 
 
 </mapper>

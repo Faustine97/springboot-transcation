@@ -31,7 +31,7 @@
             <td>${info.user_telephone}</td>
             <td>${info.message_number}</td>
         </tr>
-    </c:forEach>   
+    </c:forEach>
 </table>
 
 </body>

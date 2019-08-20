@@ -6,6 +6,7 @@ public class User {
     private String user_password;
     private String user_email;
     private String user_telephone;
+
     public int getUser_id() {
         return user_id;
     }
@@ -45,7 +46,10 @@ public class User {
     public void setUser_telephone(String user_telephone) {
         this.user_telephone = user_telephone;
     }
-    public User(){}
+
+    public User() {
+    }
+
     public User(int user_id, String user_name, String user_password, String user_email, String user_telephone) {
         this.user_id = user_id;
         this.user_name = user_name;

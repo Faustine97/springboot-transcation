@@ -20,22 +20,19 @@ public class SysLogController {
 
     @MyLog(operation = "查看日志", result = "成功")
     @RequestMapping("/syslog")
-    public String syslog(HttpSession session)
-    {
-        int page = (Integer)session.getAttribute("syslog_page");
-        List<SysLog> list = userService.selSyslog(page*10, 10);
-        session.setAttribute("SysLog",list);
+    public String syslog(HttpSession session) {
+        int page = (Integer) session.getAttribute("syslog_page");
+        List<SysLog> list = userService.selSyslog(page * 10, 10);
+        session.setAttribute("SysLog", list);
 
         return "syslog";
     }
 
     @RequestMapping("/pre_syslog")
-    public void preSyslog(HttpSession session, HttpServletResponse response)
-    {
+    public void preSyslog(HttpSession session, HttpServletResponse response) {
         int page = (Integer) session.getAttribute("syslog_page");
-        if(page>0)
-        {
-            session.setAttribute("syslog_page", page-1);
+        if (page > 0) {
+            session.setAttribute("syslog_page", page - 1);
         }
         try {
             response.sendRedirect("/syslog");
@@ -43,19 +40,19 @@ public class SysLogController {
             e.printStackTrace();
         }
     }
+
     @RequestMapping("/next_syslog")
-    public void nextSyslog(HttpSession session, HttpServletResponse response)
-    {
+    public void nextSyslog(HttpSession session, HttpServletResponse response) {
         int page = (Integer) session.getAttribute("syslog_page");
         System.out.println("syslog_page: " + page);
         int count = userService.getAllSyslogsCount();
-        System.out.println("SyslogsCount: "+ count);
-        if(((page+1)*10)<count)
-        {
-            session.setAttribute("syslog_page", page+1);
+        System.out.println("SyslogsCount: " + count);
+        if (((page + 1) * 10) < count) {
+            session.setAttribute("syslog_page", page + 1);
         }
         try {
-            response.sendRedirect("/syslog");;
+            response.sendRedirect("/syslog");
+            ;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -63,13 +60,12 @@ public class SysLogController {
 
     @MyLog(operation = "查询日志", result = "成功")
     @RequestMapping("/search_syslog")
-    public String searchSyslog(HttpServletRequest request, HttpServletResponse response)
-    {
+    public String searchSyslog(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         String operation = request.getParameter("operation");
         System.out.println("operation :" + operation);
         List<SysLog> list = userService.selSyslogWithOperation(operation);
-        session.setAttribute("SysLog",list);
+        session.setAttribute("SysLog", list);
         return "syslog";
     }
 

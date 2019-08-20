@@ -30,10 +30,23 @@
             <td><input type="text" name="user_telephone" value="${sessionScope.user_edit.user_telephone}"></td>
         </tr>
         <tr>
-            <td rowspan="4"><input type="submit" name="" user_id=""value="更新"></td>
+            <td rowspan="4"><input type="submit" name="" user_id="" value="更新"></td>
         </tr>
     </table>
 
 </form>
+<br>
+
+<form action="/fileUpload" method="post" enctype="multipart/form-data">
+    <label>上传图片</label>
+    <input type="file" name="file"/>
+    <input type="submit" value="上传"/>
+</form>
+<a href="/history_head">
+    <input type="button" value="选择头像">
+</a>
+<p>图片:</p>
+<img height="100" width="100" src="${user_head }"/>
+
 </body>
 </html>

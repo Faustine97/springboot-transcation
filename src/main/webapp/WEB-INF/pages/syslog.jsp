@@ -15,7 +15,7 @@
 <div>
     <form action="/search_syslog">
         <input type="text" name="operation">
-        <input type="submit" value="搜索" >
+        <input type="submit" value="搜索">
     </form>
 </div>
 <div style="float: right">

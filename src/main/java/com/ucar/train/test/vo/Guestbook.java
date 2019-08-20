@@ -1,6 +1,7 @@
 package com.ucar.train.test.vo;
 
 import java.sql.Timestamp;
+
 public class Guestbook {
     private int message_id;
     private String message_title;

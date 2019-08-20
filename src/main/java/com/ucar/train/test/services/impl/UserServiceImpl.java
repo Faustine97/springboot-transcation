@@ -101,78 +101,75 @@ public class UserServiceImpl implements UserService {
         userMapper.updateUser(user);
     }
 
-    public void addRole(String ROLE_NAME, String ROLE_INFO){
-        userMapper.addRole(ROLE_NAME,ROLE_INFO);
-    }
-    public void deleteRole(String ROLE_NAME)
-    {
-        userMapper.deleteRole(ROLE_NAME);
-    }
-    public void addRolePerm(String ROLE_NAME, String PERM_NAME){
-        userMapper.addRolePerm(ROLE_NAME,PERM_NAME);
-    }
-    public boolean deleteRolePerm(String ROLE_NAME, String PERM_NAME){
-       if ( userMapper.deleteRolePerm(ROLE_NAME,PERM_NAME)==0)
-       {
-           return false;
-       }
-       else {
-           return true;
-       }
+    public void addRole(String ROLE_NAME, String ROLE_INFO) {
+        userMapper.addRole(ROLE_NAME, ROLE_INFO);
     }
 
-    public void userAddRole(String ROLE_NAME, String USER_NAME)
-    {
+    public void deleteRole(String ROLE_NAME) {
+        userMapper.deleteRole(ROLE_NAME);
+    }
+
+    public void addRolePerm(String ROLE_NAME, String PERM_NAME) {
+        userMapper.addRolePerm(ROLE_NAME, PERM_NAME);
+    }
+
+    public boolean deleteRolePerm(String ROLE_NAME, String PERM_NAME) {
+        if (userMapper.deleteRolePerm(ROLE_NAME, PERM_NAME) == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void userAddRole(String ROLE_NAME, String USER_NAME) {
         userMapper.userAddRole(ROLE_NAME, USER_NAME);
     }
-    public void userDeleteRole(@Param("USER_NAME")String USER_NAME, @Param("ROLE_NAME")String ROLE_NAME)
-    {
+
+    public void userDeleteRole(@Param("USER_NAME") String USER_NAME, @Param("ROLE_NAME") String ROLE_NAME) {
         userMapper.userDeleteRole(USER_NAME, ROLE_NAME);
     }
-    public List<String> getUserPerm(String name)
-    {
+
+    public List<String> getUserPerm(String name) {
         return userMapper.getUserPerm(name);
     }
 
-    public List<String> getUserRole(String name)
-    {
+    public List<String> getUserRole(String name) {
         return userMapper.getUserRole(name);
     }
 
-    public List<String> getUserGroup(String name)
-    {
+    public List<String> getUserGroup(String name) {
         return userMapper.getUserGroup(name);
     }
-    public void deleteGuestbook(int message_id)
-    {
+
+    public void deleteGuestbook(int message_id) {
         userMapper.deleteGuestbook(message_id);
     }
-    public void updateGuestbook(String message_title, String message_content, Timestamp message_edit_time, int message_id)
-    {
-        userMapper.updateGuestbook(message_title,message_content,message_edit_time,message_id);
+
+    public void updateGuestbook(String message_title, String message_content, Timestamp message_edit_time, int message_id) {
+        userMapper.updateGuestbook(message_title, message_content, message_edit_time, message_id);
     }
-    public void addGuestbook(String message_title, String message_content, Timestamp message_create_time,Timestamp message_edit_time, int user_id)
-    {
-        userMapper.addGuestbook(message_title,message_content,message_create_time,message_edit_time,user_id);
+
+    public void addGuestbook(String message_title, String message_content, Timestamp message_create_time, Timestamp message_edit_time, int user_id) {
+        userMapper.addGuestbook(message_title, message_content, message_create_time, message_edit_time, user_id);
     }
-    public int getAllGuestbooksCount()
-    {
+
+    public int getAllGuestbooksCount() {
         return userMapper.getAllGuestbooksCount();
     }
-    public void addSyslog(SysLog sysLog)
-    {
+
+    public void addSyslog(SysLog sysLog) {
         userMapper.addSyslog(sysLog);
     }
-    public List<SysLog> selSyslog(int start, int count)
-    {
+
+    public List<SysLog> selSyslog(int start, int count) {
         return userMapper.selSyslog(start, count);
     }
-    public int getAllSyslogsCount()
-    {
+
+    public int getAllSyslogsCount() {
         return userMapper.getAllSyslogsCount();
     }
-    public List<SysLog> selSyslogWithOperation(String operation)
-    {
+
+    public List<SysLog> selSyslogWithOperation(String operation) {
         return userMapper.selSyslogWithOperation(operation);
     }
 

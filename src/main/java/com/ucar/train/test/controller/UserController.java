@@ -22,24 +22,22 @@ public class UserController {
 
     @MyLog(operation = "访问信息编辑界面", result = "成功")
     @RequestMapping("/user_edit")
-    public String userEdit(HttpSession session)
-    {
-        String user_name = (String)session.getAttribute("user");
+    public String userEdit(HttpSession session) {
+        String user_name = (String) session.getAttribute("user");
         User user = userService.getUser(user_name);
-        session.setAttribute("user_edit",user);
+        session.setAttribute("user_edit", user);
 
         return "user_edit";
     }
 
     @MyLog(operation = "更新个人信息", result = "成功")
     @RequestMapping("/user_edit_update")
-    public void userEditUpdate(HttpServletRequest request, HttpServletResponse response)
-    {
+    public void userEditUpdate(HttpServletRequest request, HttpServletResponse response) {
         String user_name = request.getParameter("user_name");
         String user_password = request.getParameter("user_password");
         String user_email = request.getParameter("user_email");
         String user_telephone = request.getParameter("user_telephone");
-        User user = new User(user_name,user_password,user_email,user_telephone);
+        User user = new User(user_name, user_password, user_email, user_telephone);
         //userService.updateUser(user_name, user_password, user_email, user_telephone);
         userService.updateUser(user);
         try {
@@ -51,10 +49,9 @@ public class UserController {
 
     @MyLog(operation = "访问用户列表界面", result = "成功")
     @RequestMapping("/user_info")
-    public String userInfo(HttpSession session)
-    {
+    public String userInfo(HttpSession session) {
         List<UserInfo> list = userService.getAllUserInfo();
-        session.setAttribute("UserInfo",list);
+        session.setAttribute("UserInfo", list);
         return "user_info";
     }
 }

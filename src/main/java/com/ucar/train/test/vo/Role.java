@@ -1,8 +1,8 @@
 package com.ucar.train.test.vo;
 
 public class Role {
-    private  String ROLE_NAME;
-    private  String ROLE_INFO;
+    private String ROLE_NAME;
+    private String ROLE_INFO;
 
     public String getROLE_NAME() {
         return ROLE_NAME;

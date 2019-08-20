@@ -1,4 +1,5 @@
 package com.ucar.train.test.aspect;
+
 import com.ucar.train.test.function.MyLog;
 import com.ucar.train.test.services.UserService;
 import com.ucar.train.test.vo.SysLog;
@@ -24,9 +25,10 @@ import java.sql.Timestamp;
 public class AspectTest {
     @Autowired
     private UserService userService;
-//    @Pointcut("execution(public * com.ucar.train.test.controller.*.*(..))")
+    //    @Pointcut("execution(public * com.ucar.train.test.controller.*.*(..))")
     Timestamp start;
     Timestamp end;
+
     @Pointcut("@annotation(com.ucar.train.test.function.MyLog)")
     private void cutMethod() {
 
@@ -61,11 +63,11 @@ public class AspectTest {
         ServletRequestAttributes sra = (ServletRequestAttributes) ra;
         HttpServletRequest request = sra.getRequest();
         HttpSession session = request.getSession();
-        int user_id = (Integer)session.getAttribute("user_id");
+        int user_id = (Integer) session.getAttribute("user_id");
         String user_name = (String) session.getAttribute("user");
         end = new Timestamp(System.currentTimeMillis());
-        long diff_time = end.getTime()-start.getTime();
-        SysLog sysLog = new SysLog(user_id,user_name,myLog.operation(),start,end,diff_time,myLog.result());
+        long diff_time = end.getTime() - start.getTime();
+        SysLog sysLog = new SysLog(user_id, user_name, myLog.operation(), start, end, diff_time, myLog.result());
 //        System.out.println(sysLog);
         userService.addSyslog(sysLog);
     }

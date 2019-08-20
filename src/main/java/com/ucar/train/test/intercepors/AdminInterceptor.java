@@ -15,20 +15,33 @@ public class AdminInterceptor implements HandlerInterceptor {
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
-        List<String> perms = (List<String>)session.getAttribute("perms");
+        List<String> perms = (List<String>) session.getAttribute("perms");
         String perm = request.getServletPath();
-        if(perms!=null && perms.contains(perm))
+        if (perms != null && perms.contains(perm))
             return true;
-        else{
-            switch (perm)
-            {
-                case "/admin" : response.sendRedirect("/admin_perm_error");break;
-                case "/user_edit" : response.sendRedirect("/user_edit_perm_error");break;
-                case "/user_info" : response.sendRedirect("/user_info_perm_error");break;
-                case "/message_create" : response.sendRedirect("/message_create_perm_error");break;
-                case "/deleteGuestbook" : response.sendRedirect("/deleteGuestbook_perm_error");break;
-                case "/updateGuestbook" : response.sendRedirect("/updateGuestbook_perm_error");break;
-                case "/syslog" : response.sendRedirect("/syslog_perm_error");break;
+        else {
+            switch (perm) {
+                case "/admin":
+                    response.sendRedirect("/admin_perm_error");
+                    break;
+                case "/user_edit":
+                    response.sendRedirect("/user_edit_perm_error");
+                    break;
+                case "/user_info":
+                    response.sendRedirect("/user_info_perm_error");
+                    break;
+                case "/message_create":
+                    response.sendRedirect("/message_create_perm_error");
+                    break;
+                case "/deleteGuestbook":
+                    response.sendRedirect("/deleteGuestbook_perm_error");
+                    break;
+                case "/updateGuestbook":
+                    response.sendRedirect("/updateGuestbook_perm_error");
+                    break;
+                case "/syslog":
+                    response.sendRedirect("/syslog_perm_error");
+                    break;
             }
             return false;
         }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ucar.train.test.mapper.UserHeadMapper">
+    <resultMap id="userHeadMap" type="com.ucar.train.test.vo.UserHead">
+        <id column="url" property="url"/>
+        <result column="user_name" property="userName"/>
+    </resultMap>
+
+
+    <insert id="saveHistoryHead" parameterType="com.ucar.train.test.vo.UserHead">
+        insert into history_head (user_name, url) values (#{userName}, #{url})
+    </insert>
+    <insert id="saveUserHead" parameterType="com.ucar.train.test.vo.UserHead">
+        insert into user_head (user_name, url) values (#{userName}, #{url})
+    </insert>
+
+    <select id="getHistoryHead" parameterType="String" resultType="com.ucar.train.test.vo.UserHead"
+            resultMap="userHeadMap">
+        select * from history_head where user_name = #{userName}
+    </select>
+
+    <select id="getUserHead" parameterType="String" resultType="com.ucar.train.test.vo.UserHead"
+            resultMap="userHeadMap">
+        select * from user_head where user_name=#{userName}
+    </select>
+    <delete id="deleteUserHead" parameterType="String">
+        delete from user_head where user_name=#{userName}
+    </delete>
+</mapper>

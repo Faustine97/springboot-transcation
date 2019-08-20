@@ -8,7 +8,8 @@ public class UserInfo {
     private String user_telephone;
     private int message_number;
 
-    public UserInfo(){}
+    public UserInfo() {
+    }
 
     public UserInfo(int user_id, String user_name, String user_email, String user_telephone, int message_number) {
         this.user_id = user_id;
