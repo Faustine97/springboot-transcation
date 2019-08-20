@@ -1,7 +1,9 @@
 package com.ucar.train.test.controller;
 
 import com.ucar.train.test.function.MyLog;
+import com.ucar.train.test.services.AccountService;
 import com.ucar.train.test.services.UserService;
+import com.ucar.train.test.vo.Account;
 import com.ucar.train.test.vo.User;
 import com.ucar.train.test.vo.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +21,16 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private AccountService accountService;
     @MyLog(operation = "访问信息编辑界面", result = "成功")
     @RequestMapping("/user_edit")
     public String userEdit(HttpSession session) {
         String user_name = (String) session.getAttribute("user");
         User user = userService.getUser(user_name);
         session.setAttribute("user_edit", user);
-
+        Account account = accountService.getUserAccount(user.getUser_id());
+        session.setAttribute("user_account",account);
         return "user_edit";
     }
 

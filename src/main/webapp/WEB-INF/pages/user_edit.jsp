@@ -16,27 +16,33 @@
 </div>
 
 <form action="/user_edit_update">
-    <table>
+    <table border="1" cellspacing="0">
         <tr>
             <td>用户名</td>
             <td>密码</td>
             <td>邮箱</td>
             <td>电话</td>
+            <td>余额</td>
         </tr>
         <tr>
             <td><input type="text" name="user_name" value="${sessionScope.user_edit.user_name}"></td>
             <td><input type="password" name="user_password"></td>
             <td><input type="text" name="user_email" value="${sessionScope.user_edit.user_email}"></td>
             <td><input type="text" name="user_telephone" value="${sessionScope.user_edit.user_telephone}"></td>
+            <td>${sessionScope.user_account.money}</td>
         </tr>
         <tr>
-            <td rowspan="4"><input type="submit" name="" user_id="" value="更新"></td>
+            <td colspan="5"><input type="submit" name="" user_id="" value="更新" align="center"></td>
         </tr>
     </table>
 
 </form>
 <br>
 
+<form action="">
+    金额：<input type="text" name="money">
+    <input type="submit" value="充值"><br><br><br>
+</form>
 <form action="/fileUpload" method="post" enctype="multipart/form-data">
     <label>上传图片</label>
     <input type="file" name="file"/>

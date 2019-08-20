@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ucar.train.test.mapper.AccountMapper">
+    <resultMap id="accountMapper" type="com.ucar.train.test.vo.Account">
+        <id property="userId" column="user_id"/>
+        <result property="money" column="money"/>
+    </resultMap>
+
+    <resultMap id="consumingRecordMapper" type="com.ucar.train.test.vo.ConsumingRecord">
+        <result property="userId" column="user_id"/>
+        <result property="type" column="type"/>
+        <result property="money" column="money"/>
+        <result property="time" column="time"/>
+    </resultMap>
+
+    <select id="getUserBalance" resultType="Integer" parameterType="Integer">
+        select money from account where user_id=#{userId}
+    </select>
+
+    <update id="updateUserAccount" parameterType="com.ucar.train.test.vo.Account">
+        update account set money=#{money} where user_id = #{userId}
+    </update>
+
+    <insert id="addConsumingRecord" parameterType="com.ucar.train.test.vo.ConsumingRecord">
+        insert into consuming_record (user_id, type, money, time) values (#{userId},#{type},#{money},#{time})
+    </insert>
+    
+    <select id="getConsumingRecord" parameterType="Integer" resultType="com.ucar.train.test.vo.ConsumingRecord" resultMap="consumingRecordMapper">
+        select * from consuming_record where user_id = #{userId};
+    </select>
+
+    <select id="getUserAccount" resultMap="accountMapper" parameterType="Integer" resultType="com.ucar.train.test.vo.Account">
+        select * from account where user_id = #{userId}
+    </select>
+</mapper>
